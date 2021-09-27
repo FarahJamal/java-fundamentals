@@ -1,6 +1,8 @@
 import java.util.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class Main{
     public static String pluralize(String word,int Quantity){
@@ -37,21 +39,27 @@ public class Main{
 
     }
     public static void clock() {
+        int counter = 0_000_000;
+        int second2 = LocalDateTime.now().getSecond();
         while (true) {
-
+            counter++;
 
             LocalDateTime now = LocalDateTime.now();
             DateTimeFormatter format = DateTimeFormatter.ofPattern("HH:mm:ss");
             String formatDateTime = now.format(format);
+String formatDataExcute=NumberFormat.getNumberInstance(Locale.US).format(counter) + " Hz";
+            if (1 == 1) {
 
-            System.out.println(formatDateTime);
-
-
+                System.out.println(formatDateTime + " " + formatDataExcute);
+                second2++;
+                counter = 0;
+            }
         }
 
     }
     public static void main(String[] args) {
-        long start = System.nanoTime();
+
+        //long start = System.nanoTime();
 
         Scanner sc=new Scanner(System.in);
         System.out.println("enter your pet kind");
@@ -66,9 +74,9 @@ public class Main{
 
 
 // some time passes
-        long end = System.nanoTime();
-        long elapsedTime = end - start;
-        System.out.println(elapsedTime/1_000_000_000);
+//        long end = System.nanoTime();
+//        long elapsedTime = end - start;
+//        System.out.println(elapsedTime/1_000_000_000);
 
         clock();
     }
