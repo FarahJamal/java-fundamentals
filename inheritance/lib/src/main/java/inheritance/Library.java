@@ -3,29 +3,71 @@
  */
 package inheritance;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Library {
     public boolean someLibraryMethod() {
         return true;
     }
 
     public static void main(String[] args) {
+
+
         Restaurant res=new Restaurant("Alakeel","JD");
+
+        res.addReview(3,"good one","farah");
+        res.addReview(3,"yumy","khair");
+
+        res.addReview(5,"good food","zeft");
+        res.addReview(5,"good food","ok");
+
+        System.out.println(res.reviews);
+
         res.addReview(5,"this restaurant has a very great burger to eat","Farah Jamal");;
         //res.updateRate(4.75);
         res.addReview(3.5,"I hate this restaurant, a little ","Severus Snape");
         res.addReview(4.5,"I love food but this restaurant the best ","Ron weasly");
         res.addReview(2,"eat is useless reading more effective","Harmony");
+        res.updateStars("Severus Snape",2,res);
+        System.out.println("line 24"+res.reviews);
+        //res.modifyReview("Severus Snape");
+       // System.out.println(res.reviews);
+
 
         //System.out.println(res);
+        Shop shop=new Shop("kaza-marka","clothes shop",3);
+        shop.addReview(4,"good shop","Farah Jamal");
+        shop.addReview(5,"great shop","omar");
+        shop.addReview(1,"ugly shop","Ahmad");
+        shop.addReview(4.5,"I love this shop","Saeed");
 
-        System.out.println(res+"\n"+res.reviews);
-        User user=new User();
-        System.out.println(res.reviews);
+        /////////////
+        List<String> movies=new ArrayList<>();
+        movies.add("the Joker");
+        movies.add("the Mask");
+        movies.add("attack on titans");
 
-        user.findReviews(res.reviews,"Omar");
-        System.out.println(res.reviews);
+        Theater theater=new Theater("Main Jordan theater",movies);
+        theater.addReview(4,"great Movie","farah");
+        theater.addReview("harry-potter",5,"the best movie ever!","Farah Jamal");
+        //theater.updateRate(3.4);
 
 
+
+
+        //System.out.println(res+"\n"+res.reviews);
+        //System.out.println(shop+"\n"+shop.reviews);
+       // System.out.println(theater+"\n"+theater.reviews);
+        theater.addMovie("Death Note");
+        theater.deleteMovie("the Mask");
+        //System.out.println(movies);
+
+
+
+       User user=new User();
+       user.findReviews(theater.reviews,"farah");
+        //System.out.println(theater+"\n"+theater.reviews);
 
 
     }

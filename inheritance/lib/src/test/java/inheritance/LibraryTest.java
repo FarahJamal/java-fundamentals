@@ -4,27 +4,63 @@
 package inheritance;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LibraryTest {
     @Test void ResturantName() {
         Restaurant res=new Restaurant("Alakeel","JD");
-        assertEquals("Resturant Name {Mcdonalds} Rate {5.0} Price Cat {2.0$ }\n" +
-                "[]",res.toString());
+        assertEquals("Restaurant{name='Alakeel', stars=0.0, priceCat='JD'}\n" +
+                " all reviews:  \n" +
+                "[]"
+                ,res.toString());
     }
     @Test void ResturantReview() {
         Review rest=new Review(2,"It is a good resturant","Farah Jamal");
-        assertEquals("Review {It is a good resturant} Author {Farah Jamal} Rate {2.0}",rest.toString());
+        assertEquals("Review{rate=2.0, body='It is a good resturant', author='Farah Jamal'}",rest.toString());
     }
     @Test void addMutiplerev(){
         Restaurant res=new Restaurant("Mcdonalds","JD");
 
         res.addReview(3,"good one","farah");
-        res.addReview(5,"good food","ahmad");
         res.addReview(3,"yumy","khair");
-        assertEquals("Restaurant{name='Alakeel', stars=3.0, priceCat='JD'}\n" +
-                " all reviews:  \n" +
-                "[Review{rate=3.0, body='good one', author='farah'}, Review{rate=5.0, body='good food', author='ahmad'}, Review{rate=3.0, body='yumy', author='khair'}]\n",res.toString());
+
+        res.addReview(5,"good food","zeft");
+        res.addReview(5,"good food","ok");
+        assertEquals("[Review{rate=3.0, body='good one', author='farah'}, Review{rate=3.0, body='yumy', author='khair'}, Review{rate=5.0, body='good food', author='zeft'}, Review{rate=5.0, body='good food', author='ok'}]",res.reviews.toString());
 
     }
+
+
+    @Test void shopName() {
+        Shop shop=new Shop("Alakeel","nice",3);
+        assertEquals("Shop{shopName='Alakeel', shopDescription='nice', numberOfDollarSigns=3}"
+                ,shop.toString());
+    }
+    @Test void shopReview() {
+        Review rest=new Review(2,"It is a good shop","Farah Jamal");
+        assertEquals("Review{rate=2.0, body='It is a good shop', author='Farah Jamal'}",rest.toString());
+    }
+    @Test void movieName() {
+        List<String> movies=new ArrayList<>();
+        movies.add("the Joker");
+        movies.add("the Mask");
+        movies.add("attack on titans");
+        Theater theater=new Theater("Jordan",movies);
+        assertEquals("Theater{name='Jordan', movies=[the Joker, the Mask, attack on titans]}"
+                ,theater.toString());
+    }
+    @Test void movieReview() {
+        Review rest=new Review(2,"It is a good movie","Farah Jamal");
+        assertEquals("Review{rate=2.0, body='It is a good movie', author='Farah Jamal'}",rest.toString());
+    }
+
+    @Test void movieWithNameReview() {
+        Review rest=new Review("hello","farah",4.5,"good");
+        assertEquals("Review{rate=4.5, body='hello', author='farah', movieName='good'}",rest.toString());
+    }
+
 }
