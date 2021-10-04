@@ -1,12 +1,12 @@
 package inheritance;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class User extends Review{
     String name;
 
 
- public void findReviews(ArrayList<Review> rev,String n) {
+ public void findReviews(List<Review> rev,String n) {
      for (Review element : rev) {
 
          if (element.toString().contains(n)) {
@@ -15,18 +15,12 @@ public class User extends Review{
 
          }
          else {
-             Review review=new Review();
-             review.updateRate(2.8);
+             Restaurant res=new Restaurant("Alakeel","JD");
+             res.addReview(2.8,"people works there so rude!","Omar");
+
          }
          }
      }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "rate=" + rate +
-                ", body='" + body + '\'' +
-                ", author='" + author + '\'' +
-                '}';
-    }
+
 }

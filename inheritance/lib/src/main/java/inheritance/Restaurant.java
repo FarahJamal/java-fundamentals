@@ -2,7 +2,7 @@ package inheritance;
 
 import java.util.ArrayList;
 
-public class Restaurant extends Review {
+public class Restaurant extends Review implements AddReview {
 
     /*
     * Each Restaurant should have a name,
@@ -15,8 +15,8 @@ public class Restaurant extends Review {
     String priceCat="JD";
 
     //
-    private int starsSum=0;
-    private int revCounter=0;
+     int starsSum=0;
+     int revCounter=0;
 //
 protected ArrayList<Review> reviews=new ArrayList<>();
 
@@ -25,13 +25,14 @@ protected ArrayList<Review> reviews=new ArrayList<>();
         this.name = name;
         this.priceCat = priceCat;
     }
-
-    public void addReview(double rate,String body,String author){
+@Override
+public void addReview(double rate,String body,String author){
         if (rate>0&&rate<=5){
             Review rev=new Review(rate,body,author);
             this.starsSum+= rev.getRate();
             this.revCounter+=1;
-            this.rate=this.starsSum/this.revCounter;
+
+            rev.rate=this.starsSum/this.revCounter;
             this.reviews.add(rev);
         }else {
             System.out.println("Please add number beteen 0 and 5");
@@ -39,12 +40,19 @@ protected ArrayList<Review> reviews=new ArrayList<>();
         }
 
     }
+    public void modifyReview(String name){
+        User user=new User();
+        user.findReviews(reviews,name);
+        updateRate(name,2.1);
+    }
     @Override
     public String toString() {
         return "Restaurant{" +
                 "name='" + name + '\'' +
-                ", stars=" + rate +
+                ", stars=" + starsSum/revCounter +
                 ", priceCat='" + priceCat + '\'' +
                 "}\n "+ "all reviews: "+" \n"+reviews;
     }
+
+
 }

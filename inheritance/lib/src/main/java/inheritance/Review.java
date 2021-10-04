@@ -1,5 +1,7 @@
 package inheritance;
 
+import java.util.List;
+
 public class Review {
 
     /*
@@ -10,12 +12,21 @@ public class Review {
     double rate;
     String body;
     String author;
+    String movieName;
 
     public Review(double rate, String body, String author) {
         this.rate = rate;
         this.body = body;
         this.author = author;
     }
+    public Review(String body,String author,double rate,String movieName){
+
+        this.body=body;
+        this.author=author;
+        this.rate=rate;
+        this.movieName=movieName;
+    }
+
     public Review() {
     setRate(rate);
     }
@@ -47,11 +58,27 @@ public class Review {
     public void setAuthor(String author) {
         this.author = author;
     }
+
+
 // for stretch goals stuff:-
-public void updateRate(double rate) {
-    validateRate(rate);
-    this.rate = rate;
+public void updateRate(String userName, double rate) {
+            validateRate(rate);
+            this.rate = rate;
+
+
 }
+    public void updateStars(String author,double newStar, Restaurant restaurantCurrent){
+        for(Review restaurants : restaurantCurrent.reviews){
+            if(restaurants.author==author){
+                this.rate=newStar;
+                //restaurantCurrent.calculateStars();
+                System.out.println("from update stars"+newStar+" "+restaurantCurrent.reviews);
+                return;
+            }
+
+        }
+        System.out.println("type in correct author, no match found");
+    }
 
     public String validateRate(double number) {
 
@@ -62,12 +89,24 @@ public void updateRate(double rate) {
 return "";
 
     }
-    @Override
+
+
+  @Override
     public String toString() {
+        if(this.movieName==null){
         return "Review{" +
                 "rate=" + rate +
                 ", body='" + body + '\'' +
                 ", author='" + author + '\'' +
                 '}';
+        }
+        else{
+            return "Review{" +
+                "rate=" + rate +
+                        ", body='" + body + '\'' +
+                        ", author='" + author + '\'' +
+                        ", movieName='" + movieName + '\'' +
+                        '}';
+        }
     }
 }
