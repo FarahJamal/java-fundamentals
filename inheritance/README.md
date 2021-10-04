@@ -43,3 +43,36 @@ S
 * When you associate a review with a restaurant, that restaurant’s star rating should change. Ensure that your addReview method updates the Restaurant star rating appropriately, and add tests. (In particular, ensure that if you’re trying to call addReview when the restaurant and the review are already associated, the star rating of the restaurant does not update.)
 
 * Ensure that you can test your code by running ./gradlew test.
+
+# lab 07:
+Lab 07
+General Information
+
+# Setup
+ 
+  * Continue working in your inheritance library. Start by refactoring any of the relationships that you created in the last lab, but question today.
+  
+# Feature Tasks
+* the users want shops! Create a Shop class; a Shop should have a name, description, and number of dollar signs.
+* the users want shops! Create a Shop class; a Shop should have a name, description, and number of dollar signs.
+* Implement a constructor for a Shop.
+* Implement a reasonable toString method for Shops.
+* Add tests for the basics of your Shop class.
+* The users also want to review shops!
+* It would be great if a Review could be about either a Shop or a Restaurant. Choose an implementation, and make this possible.
+* Ensure that your Shop class has an instance method to add a review about that shop, and that it works just as well as the Restaurant instance method with the same purpose.
++ Write tests for this functionality.
+- The users want theaters! Create a Theater class; a Theater should have a name and all of the movies currently showing there. (Strings are fine for the movies; no need to create another class.)
+- Implement a constructor for a Theater.
+* Write addMovie and removeMovie instance methods that allow the theater to update which movies are being shown.
++ Implement a reasonable toString method for Theaters.
+- Test your Theater functionality.
+- Review all the things!
+* Ensure that your Theater is just as reviewable as your Restaurant and your Shop.
++ Test this functionality.
+- Users are frustrated: they like having a body, an author, and a number of stars, but when they’re reviewing a Theater, they also want to specify which movie they saw.
+- Some reviews should now have a String movie instance variable, to hold which movie that reviewer is referencing.
+- Make sure that someone reviewing a Restaurant or a Shop doesn’t have to include which movie they saw!
++ It’s also okay if someone doesn’t want to include the movie they saw when they’re reviewing a theater (maybe they just went in for the popcorn).
+* Add testing for any new functionality you’ve created.
+- Ensure that you can test your code by running ./gradlew test.

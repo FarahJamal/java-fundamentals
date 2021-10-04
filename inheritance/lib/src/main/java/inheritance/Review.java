@@ -60,13 +60,7 @@ public class Review {
     }
 
 
-// for stretch goals stuff:-
-public void updateRate(String userName, double rate) {
-            validateRate(rate);
-            this.rate = rate;
 
-
-}
     public void updateStars(String author,double newStar, Restaurant restaurantCurrent){
         for(Review restaurants : restaurantCurrent.reviews){
             if(restaurants.author==author){

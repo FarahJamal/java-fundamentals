@@ -32,7 +32,7 @@ public void addReview(double rate,String body,String author){
             this.starsSum+= rev.getRate();
             this.revCounter+=1;
 
-            rev.rate=this.starsSum/this.revCounter;
+            this.rate=this.starsSum/this.revCounter;
             this.reviews.add(rev);
         }else {
             System.out.println("Please add number beteen 0 and 5");
@@ -40,16 +40,12 @@ public void addReview(double rate,String body,String author){
         }
 
     }
-    public void modifyReview(String name){
-        User user=new User();
-        user.findReviews(reviews,name);
-        updateRate(name,2.1);
-    }
+
     @Override
     public String toString() {
         return "Restaurant{" +
                 "name='" + name + '\'' +
-                ", stars=" + starsSum/revCounter +
+                ", stars=" + rate +
                 ", priceCat='" + priceCat + '\'' +
                 "}\n "+ "all reviews: "+" \n"+reviews;
     }
